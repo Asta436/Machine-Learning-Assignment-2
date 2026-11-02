@@ -1,3 +1,4 @@
 model_name,accuracy,auc,precision,recall,f1,mcc,artifact_path
 Logistic Regression,0.727506,0.906643,0.732903,0.727506,0.727654,0.64868,model/logistic_regression.joblib
 Decision Tree,0.748072,0.881103,0.750648,0.748072,0.746388,0.672317,model/decision_tree.joblib
+KNN,0.755784,0.90379,0.752099,0.755784,0.752201,0.68844,model/knn.joblib
