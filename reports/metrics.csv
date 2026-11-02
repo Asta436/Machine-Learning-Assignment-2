@@ -1,2 +1,2 @@
 model_name,accuracy,auc,precision,recall,f1,mcc,artifact_path
-Logistic Regression,0.727506,0.906643,0.732903,0.727506,0.727654,0.64868,D:/Srikanth/BITS/Semester-1/CourseMachine Learning (S1-26_AIMLZG565)/Assingment 2/Machine-Learning-Assignment-2/model/logistic_regression.joblib
+Logistic Regression,0.727506,0.906643,0.732903,0.727506,0.727654,0.64868,model/logistic_regression.joblib

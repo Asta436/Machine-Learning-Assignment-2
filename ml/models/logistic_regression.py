@@ -19,7 +19,6 @@ def build_estimator() -> LogisticRegression:
     """
     return LogisticRegression(
         solver="lbfgs",
-        multi_class="auto",
         max_iter=2000,
         random_state=RANDOM_STATE,
     )

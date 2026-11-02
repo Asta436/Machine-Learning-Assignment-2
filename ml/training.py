@@ -5,7 +5,7 @@ from __future__ import annotations
 from pathlib import Path
 from typing import Any, Callable
 
-from ml.config import PREPROCESSOR_PATH
+from ml.config import PREPROCESSOR_PATH, ROOT
 from ml.io_utils import (
     format_metrics_block,
     load_joblib,
@@ -83,6 +83,7 @@ def run_model_training(
         artifact_path,
     )
 
+    relative_artifact = Path(artifact_path).resolve().relative_to(ROOT.resolve())
     row = {
         "model_name": model_name,
         "accuracy": round(metrics["accuracy"], 6),
@@ -91,7 +92,7 @@ def run_model_training(
         "recall": round(metrics["recall"], 6),
         "f1": round(metrics["f1"], 6),
         "mcc": round(metrics["mcc"], 6),
-        "artifact_path": str(Path(artifact_path).as_posix()),
+        "artifact_path": relative_artifact.as_posix(),
     }
     upsert_metrics_row(row)
     print(format_metrics_block(row))

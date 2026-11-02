@@ -63,8 +63,9 @@ def upsert_metrics_row(row: dict[str, Any], path: Path = METRICS_CSV) -> pd.Data
     """Insert or replace a model's metrics row and rewrite the CSV."""
     ensure_directory(REPORTS_DIR)
     frame = load_metrics_table(path)
-    frame = frame[frame["model_name"] != row["model_name"]]
-    frame = pd.concat([frame, pd.DataFrame([row])], ignore_index=True)
+    frame = frame[frame["model_name"] != row["model_name"]].copy()
+    new_row = pd.DataFrame([row], columns=METRIC_COLUMNS)
+    frame = new_row if frame.empty else pd.concat([frame, new_row], ignore_index=True)
 
     # Keep a stable display order when known models are present.
     preferred = [
