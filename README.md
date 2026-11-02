@@ -20,27 +20,48 @@ This is a **multi-class classification** problem. We train and compare five clas
 | Item | Details |
 |------|---------|
 | Dataset | UCI **Steel Plates Faults** |
-| Source | https://archive.ics.uci.edu/dataset/198/steel+plates+faults |
+| Source URL | https://archive.ics.uci.edu/dataset/198/steel+plates+faults |
+| Direct download | https://archive.ics.uci.edu/static/public/198/steel+plates+faults.zip |
 | Task type | Multi-class classification |
 | Instances | 1,941 (≥ 500 required) |
 | Input features | 27 numeric process / geometry attributes (≥ 12 required) |
-| Target | One of 7 fault types (Pastry, Z-Scratch, K-Scratch, Stains, Dirtiness, Bumps, Other Faults) |
+| Target column | `Fault_Type` — one of 7 fault types |
+| Citation | Dataset donated to the UCI Machine Learning Repository (Dataset ID 198) |
 
-**Preprocessing (to be documented after training):**
+### Target classes (full dataset)
 
-- Stratified train/test split
-- Feature scaling where required (Logistic Regression, KNN, SVM)
-- Saved preprocessor artifact under `model/`
+| Fault type | Count |
+|------------|------:|
+| Other_Faults | 673 |
+| Bumps | 402 |
+| K_Scatch | 391 |
+| Z_Scratch | 190 |
+| Pastry | 158 |
+| Stains | 72 |
+| Dirtiness | 55 |
 
-**Test data for experiments:** `test_data.csv` (added in the data phase).
+### Feature groups (27 inputs)
+
+- Geometry / location: `X_Minimum`, `X_Maximum`, `Y_Minimum`, `Y_Maximum`, `Pixels_Areas`, `X_Perimeter`, `Y_Perimeter`, …
+- Luminosity: `Sum_of_Luminosity`, `Minimum_of_Luminosity`, `Maximum_of_Luminosity`, `Luminosity_Index`
+- Process / steel type: `Length_of_Conveyer`, `TypeOfSteel_A300`, `TypeOfSteel_A400`, `Steel_Plate_Thickness`
+- Shape / index features: `Edges_Index`, `Empty_Index`, `Square_Index`, `Orientation_Index`, `SigmoidOfAreas`, and related log/index columns
+
+### Preprocessing for this assignment
+
+- Converted the original 7 one-hot fault indicator columns into a single `Fault_Type` label
+- Stratified train/test split (**80% / 20%**, `random_state=42`)
+- Held-out test set saved as `test_data.csv` (389 rows; includes all features + target)
+- Full cleaned dataset: `data/steel_plates_faults.csv`
+- Matching train split: `data/train_data.csv`
+- Reproduce with: `python prepare_data.py`
+- Feature scaling (for LR / KNN / SVM) will be fit on the training split only during model training
 
 ---
 
 ## c. GitHub Repository Link
 
-> _Update after the repository is finalized / made public for evaluation._
-
-`https://github.com/<username>/Machine-Learning-Assignment-2`
+https://github.com/Asta436/Machine-Learning-Assignment-2
 
 **Live Streamlit App:** _to be added after Streamlit Community Cloud deployment_
 
@@ -81,12 +102,15 @@ _Metrics will be filled after model training (weighted averaging for multi-class
 
 ```text
 Machine-Learning-Assignment-2/
-├── app.py                 # Streamlit application (Phase 3)
-├── train_models.py        # Training + evaluation script (Phase 2)
-├── requirements.txt       # Python dependencies (Phase 4)
+├── app.py                 # Streamlit application (Step 3)
+├── prepare_data.py        # Download UCI data + stratified split
+├── train_models.py        # Training + evaluation script (Step 2)
+├── requirements.txt       # Python dependencies (Step 4)
 ├── README.md
-├── test_data.csv          # Held-out test set with target (Phase 1)
-├── data/                  # Full dataset
+├── test_data.csv          # Held-out test set with target
+├── data/
+│   ├── steel_plates_faults.csv
+│   └── train_data.csv
 └── model/                 # Saved .joblib models + preprocessor
 ```
 
@@ -97,6 +121,7 @@ Machine-Learning-Assignment-2/
 ```bash
 # After requirements.txt is added
 pip install -r requirements.txt
+python prepare_data.py
 streamlit run app.py
 ```
 
@@ -104,9 +129,9 @@ streamlit run app.py
 
 ## Status
 
-- [x] Phase 0 — Project structure and README skeleton
-- [ ] Phase 1 — Dataset download, citation, `test_data.csv`
-- [ ] Phase 2 — Train 5 models, compute metrics, save artifacts
-- [ ] Phase 3 — Streamlit app (upload, dropdown, metrics, confusion matrix)
-- [ ] Phase 4 — Requirements freeze + Streamlit Cloud deploy
-- [ ] Phase 5 — BITS Virtual Lab screenshot + submission PDF
+- [x] Step 0 — Project structure and README skeleton
+- [x] Step 1 — Dataset download, citation, `test_data.csv`
+- [ ] Step 2 — Train 5 models, compute metrics, save artifacts
+- [ ] Step 3 — Streamlit app (upload, dropdown, metrics, confusion matrix)
+- [ ] Step 4 — Requirements freeze + Streamlit Cloud deploy
+- [ ] Step 5 — BITS Virtual Lab screenshot + submission PDF
