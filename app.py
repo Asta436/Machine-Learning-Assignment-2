@@ -150,10 +150,10 @@ def page_evaluate_one(frame: pd.DataFrame) -> None:
         left, right = st.columns(2)
         with left:
             st.markdown("#### Metrics table")
-            st.dataframe(metrics_to_frame(result.metrics), hide_index=True, width="stretch")
+            st.dataframe(metrics_to_frame(result.metrics), hide_index=True, use_container_width=True)
         with right:
             st.markdown("#### Classification report")
-            st.dataframe(result.report_frame.round(3), width="stretch")
+            st.dataframe(result.report_frame.round(3), use_container_width=True)
 
         st.markdown("#### Confusion matrix")
         st.pyplot(
@@ -178,7 +178,7 @@ def page_compare_all(frame: pd.DataFrame) -> None:
             return
 
         st.subheader("Comparison on current test data")
-        st.dataframe(table, hide_index=True, width="stretch")
+        st.dataframe(table, hide_index=True, use_container_width=True)
 
         best_row = table.sort_values(
             by=["MCC", "F1", "Accuracy"],
@@ -207,10 +207,10 @@ def page_data_preview(frame: pd.DataFrame) -> None:
     if TARGET_COLUMN in frame.columns:
         st.markdown("#### Class distribution")
         counts = frame[TARGET_COLUMN].value_counts().rename_axis("Fault_Type").reset_index(name="Count")
-        st.dataframe(counts, hide_index=True, width="stretch")
+        st.dataframe(counts, hide_index=True, use_container_width=True)
 
     st.markdown("#### Sample rows")
-    st.dataframe(frame.head(20), hide_index=True, width="stretch")
+    st.dataframe(frame.head(20), hide_index=True, use_container_width=True)
 
     with st.expander("Column list"):
         st.code("\n".join(frame.columns.tolist()))
