@@ -40,6 +40,9 @@ PAGES = [
 ]
 
 GITHUB_URL = "https://github.com/Asta436/Machine-Learning-Assignment-2"
+STREAMLIT_URL = (
+    "https://machine-learning-assignment-2-eugjdv8qmiy3zgfk64bwxh.streamlit.app/"
+)
 DATASET_URL = "https://archive.ics.uci.edu/dataset/198/steel+plates+faults"
 
 
@@ -303,6 +306,7 @@ luminosity / process features into 7 fault types (`Fault_Type`).
 ### Links
 - Dataset: [{DATASET_URL}]({DATASET_URL})
 - GitHub: [{GITHUB_URL}]({GITHUB_URL})
+- Live app: [{STREAMLIT_URL}]({STREAMLIT_URL})
 - Bundled test file: `{Path(TEST_CSV).name}`
 """
     )

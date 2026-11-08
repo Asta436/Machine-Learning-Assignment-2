@@ -65,7 +65,7 @@ This is a **multi-class classification** problem. We train and compare five clas
 
 https://github.com/Asta436/Machine-Learning-Assignment-2
 
-**Live Streamlit App:** _to be added after Streamlit Community Cloud deployment_
+**Live Streamlit App:** https://machine-learning-assignment-2-eugjdv8qmiy3zgfk64bwxh.streamlit.app/
 
 ---
 
