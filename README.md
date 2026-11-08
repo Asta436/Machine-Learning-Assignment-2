@@ -152,14 +152,3 @@ streamlit run app.py
 2. **Compare all models** — same CSV scored by all five saved models (no retraining)  
 3. **Data preview** — shape, class counts, sample rows  
 4. **About** — dataset / usage notes  
-
----
-
-## Status
-
-- [x] Step 0 — Project structure and README skeleton
-- [x] Step 1 — Dataset download, citation, `test_data.csv`
-- [x] Step 2 — Train 5 models, compute metrics, save artifacts
-- [x] Step 3 — Streamlit app (upload, dropdown, metrics, confusion matrix)
-- [x] Step 4 — Requirements + Streamlit Community Cloud deploy
-- [ ] Step 5 — BITS Virtual Lab screenshot + submission PDF
