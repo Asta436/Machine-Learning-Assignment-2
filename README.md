@@ -161,5 +161,5 @@ streamlit run app.py
 - [x] Step 1 — Dataset download, citation, `test_data.csv`
 - [x] Step 2 — Train 5 models, compute metrics, save artifacts
 - [x] Step 3 — Streamlit app (upload, dropdown, metrics, confusion matrix)
-- [ ] Step 4 — Requirements freeze + Streamlit Cloud deploy
+- [x] Step 4 — Requirements + Streamlit Community Cloud deploy
 - [ ] Step 5 — BITS Virtual Lab screenshot + submission PDF
