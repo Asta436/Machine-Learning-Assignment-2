@@ -57,6 +57,7 @@ This is a **multi-class classification** problem. We train and compare five clas
 - Reproduce with: `python prepare_data.py`
 - `StandardScaler` + `LabelEncoder` fitted **only on the training split** and saved as `model/preprocessor.joblib`
 - Evaluation protocol: weighted Precision / Recall / F1; one-vs-rest weighted AUC; multiclass MCC
+- Note: **weighted Recall equals Accuracy** by definition, so those two columns match in the comparison table (not a reporting error)
 
 ---
 
@@ -135,16 +136,22 @@ Machine-Learning-Assignment-2/
 
 ---
 
-## How to run locally (placeholder)
+## How to run locally
 
 ```bash
-# After requirements.txt is added
 pip install -r requirements.txt
 python prepare_data.py
 python fit_preprocessor.py
 python train_models.py
 streamlit run app.py
 ```
+
+### Streamlit app pages
+
+1. **Evaluate one model** — upload/bundled CSV + model dropdown → metrics, classification report, confusion matrix  
+2. **Compare all models** — same CSV scored by all five saved models (no retraining)  
+3. **Data preview** — shape, class counts, sample rows  
+4. **About** — dataset / usage notes  
 
 ---
 
@@ -153,6 +160,6 @@ streamlit run app.py
 - [x] Step 0 — Project structure and README skeleton
 - [x] Step 1 — Dataset download, citation, `test_data.csv`
 - [x] Step 2 — Train 5 models, compute metrics, save artifacts
-- [ ] Step 3 — Streamlit app (upload, dropdown, metrics, confusion matrix)
+- [x] Step 3 — Streamlit app (upload, dropdown, metrics, confusion matrix)
 - [ ] Step 4 — Requirements freeze + Streamlit Cloud deploy
 - [ ] Step 5 — BITS Virtual Lab screenshot + submission PDF
