@@ -52,9 +52,17 @@ def load_default_test_csv() -> pd.DataFrame:
 
 def metrics_to_frame(metrics: dict[str, float]) -> pd.DataFrame:
     order = ["accuracy", "auc", "precision", "recall", "f1", "mcc"]
+    labels = {
+        "accuracy": "Accuracy",
+        "auc": "AUC",
+        "precision": "Precision",
+        "recall": "Recall",
+        "f1": "F1",
+        "mcc": "MCC",
+    }
     return pd.DataFrame(
         {
-            "Metric": [name.upper() if name == "auc" else name.title() for name in order],
+            "Metric": [labels[name] for name in order],
             "Value": [round(metrics[name], 4) for name in order],
         }
     )
